@@ -6,6 +6,7 @@ import com.google.inject.TypeLiteral;
 import com.google.inject.matcher.Matchers;
 import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.magentys.cinnamon.webdriver.support.FindByKey;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindAll;
@@ -34,7 +35,7 @@ public final class WebDriverModule extends AbstractModule {
                 while (clazz != null) {
                     for (Field field : clazz.getDeclaredFields()) {
                         if (field.isAnnotationPresent(FindByKey.class) || field.isAnnotationPresent(FindBy.class) || field
-                                .isAnnotationPresent(FindAll.class)) {
+                                .isAnnotationPresent(FindAll.class) || field.isAnnotationPresent(iOSXCUITFindBy.class)) {
                             return true;
                         }
                     }
